@@ -1,14 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Autodrive - Inventario</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    
-    <div></div>
-    <div></div>
-    <div></div>
+
+    <header>
+        <h1>Panel de Gestión Autodrive</h1>
+        <p>Inventario interactivo de vehículos</p>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Registrar Vehículo</h2>
+
+            <form id="formVehiculo">
+                <input type="text" id="modelo" placeholder="Modelo del vehículo">
+                <input type="number" id="precio" placeholder="Precio base">
+                <button type="submit">Agregar Vehículo</button>
+            </form>
+        </section>
+
+        <section class="metricas">
+            <div class="metrica-card">
+                <h3>Total de Autos</h3>
+                <p id="totalAutos">0</p>
+            </div>
+
+            <div class="metrica-card">
+                <h3>Valor de Inversión</h3>
+                <p id="totalInversion">$0.00</p>
+            </div>
+        </section>
+
+        <section class="inventario">
+            <h2>Inventario de Vehículos</h2>
+            <div id="listaVehiculos"></div>
+        </section>
+    </main>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>
