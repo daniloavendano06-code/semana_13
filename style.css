@@ -62,7 +62,7 @@ h2 {
 
 form {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr auto;
     gap: 15px;
 }
 
@@ -180,12 +180,22 @@ button:hover {
     box-shadow: 0 8px 18px rgba(220, 38, 38, 0.35);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+    form {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .panel {
         grid-template-columns: 1fr;
     }
+}
 
+@media (max-width: 650px) {
     form {
         grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 36px;
     }
 }
