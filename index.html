@@ -4,27 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autodrive - Inventario</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <header>
-        <h1>Panel de Gestión Autodrive</h1>
-        <p>Inventario interactivo de vehículos</p>
-    </header>
+<header>
+    <h1>Autodrive</h1>
+    <p>Panel de Gestión e Inventario de Vehículos</p>
+</header>
 
-    <main>
-        <section class="form-section">
+<main>
+    <section class="panel">
+        <div class="form-section">
             <h2>Registrar Vehículo</h2>
 
             <form id="formVehiculo">
-                <input type="text" id="modelo" placeholder="Modelo del vehículo">
-                <input type="number" id="precio" placeholder="Precio base">
+                <select id="tipoVehiculo">
+                    <option value="">Seleccione tipo de vehículo</option>
+                    <option value="Sedán">Sedán</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Pickup">Pickup</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Camioneta">Camioneta</option>
+                    <option value="Deportivo">Deportivo</option>
+                    <option value="Eléctrico">Eléctrico</option>
+                    <option value="Híbrido">Híbrido</option>
+                    <option value="Minivan">Minivan</option>
+                </select>
+
+                <input type="number" id="precio" placeholder="Precio base del vehículo">
+
                 <button type="submit">Agregar Vehículo</button>
             </form>
-        </section>
+        </div>
 
-        <section class="metricas">
+        <div class="metricas">
             <div class="metrica-card">
                 <h3>Total de Autos</h3>
                 <p id="totalAutos">0</p>
@@ -34,14 +48,15 @@
                 <h3>Valor de Inversión</h3>
                 <p id="totalInversion">$0.00</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="inventario">
-            <h2>Inventario de Vehículos</h2>
-            <div id="listaVehiculos"></div>
-        </section>
-    </main>
+    <section class="inventario">
+        <h2>Inventario Actual</h2>
+        <div id="listaVehiculos"></div>
+    </section>
+</main>
 
-    <script type="module" src="main.js"></script>
+<script type="module" src="main.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import cargarVehiculos, { guardarVehiculos } from "./storage.js";
 
 const formulario = document.getElementById("formVehiculo");
-const modeloInput = document.getElementById("modelo");
+const tipoVehiculoInput = document.getElementById("tipoVehiculo");
 const precioInput = document.getElementById("precio");
 
 const contenedor = document.getElementById("listaVehiculos");
@@ -13,19 +13,26 @@ let vehiculos = cargarVehiculos();
 
 renderizar();
 
+function formatoMoneda(valor) {
+    return valor.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const modelo = modeloInput.value.trim();
+    const tipo = tipoVehiculoInput.value;
     const precio = Number(precioInput.value);
 
-    if (!modelo || precio <= 0 || isNaN(precio)) {
-        alert("Complete todos los campos correctamente.");
+    if (!tipo || precio <= 0 || isNaN(precio)) {
+        alert("Seleccione un tipo de vehículo y escriba un precio válido.");
         return;
     }
 
     const nuevoVehiculo = {
-        modelo: modelo,
+        tipo: tipo,
         precio: precio
     };
 
@@ -47,16 +54,16 @@ function renderizar() {
         tarjeta.classList.add("card-auto");
 
         const titulo = document.createElement("h3");
-        titulo.textContent = vehiculo.modelo;
+        titulo.textContent = vehiculo.tipo;
 
         const precioBase = document.createElement("p");
-        precioBase.textContent = `Precio Base: $${vehiculo.precio.toFixed(2)}`;
+        precioBase.textContent = `Precio Base: $${formatoMoneda(vehiculo.precio)}`;
 
         const impuesto = document.createElement("p");
-        impuesto.textContent = `IVA 15%: $${iva.toFixed(2)}`;
+        impuesto.textContent = `IVA 15%: $${formatoMoneda(iva)}`;
 
         const total = document.createElement("p");
-        total.textContent = `Precio Final: $${precioFinal.toFixed(2)}`;
+        total.textContent = `Precio Final: $${formatoMoneda(precioFinal)}`;
 
         const botonEliminar = document.createElement("button");
         botonEliminar.textContent = "Eliminar";
@@ -92,5 +99,5 @@ function actualizarMetricas() {
         inversion += vehiculo.precio;
     });
 
-    totalInversion.textContent = `$${inversion.toFixed(2)}`;
+    totalInversion.textContent = `$${formatoMoneda(inversion)}`;
 }
